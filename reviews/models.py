@@ -59,7 +59,7 @@ class Review(models.Model):
     minutes_per_day = models.PositiveSmallIntegerField(validators=[MaxValueValidator(1440)])
     score = models.PositiveSmallIntegerField()
     location = gis_models.PointField()
-    comment = models.TextField()
+    comment = models.TextField(max_length=5000)
 
     class Meta:
         abstract = True
