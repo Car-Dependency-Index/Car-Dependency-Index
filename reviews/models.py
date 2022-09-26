@@ -56,6 +56,7 @@ class DemographicSurvey(models.Model):
 
 class Review(models.Model):
     # All the Review fields we will need from the survey here
+    minutes_per_day = models.PositiveSmallIntegerField(validators=[MaxValueValidator(1440)])
     score = models.PositiveSmallIntegerField()
     location = gis_models.PointField()
     comment = models.TextField()
@@ -69,7 +70,6 @@ class TransitReview(Review):
 
 
 class BikeReview(Review):
-    minutes_per_day_outside = models.PositiveSmallIntegerField(validators=[MaxValueValidator(1440)])
     safety = models.PositiveSmallIntegerField()
     noise = models.PositiveSmallIntegerField()
 
